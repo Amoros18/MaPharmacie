@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('pharmacie_medicaments', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_pharmacie');
-            $table->integer('id_medicament');
+            $table->unsignedBigInteger('id_pharmacie');
+            $table->unsignedBigInteger('id_medicament');
             $table->enum('statut',['Disponible','Non Disponible']);
             $table->integer('quantite');
             $table->timestamps();

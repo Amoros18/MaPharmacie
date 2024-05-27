@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->integer('id_pharmacie');
+            $table->unsignedBigInteger('id_pharmacie');
             $table->rememberToken();
             $table->timestamps();
             $table->foreign('id_pharmacie')->references('id')->on('pharmacies')->onDelete('cascade')->onUpdate('cascade');
