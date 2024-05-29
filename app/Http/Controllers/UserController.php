@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\UserRequest;
 use App\Models\Medicament;
+use App\Models\PharmacieMedicament;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -74,7 +75,7 @@ class UserController extends Controller
         $nom = $request->input('nom');
         $principe_actif = $request->input('principe_actif');
         $categorie = $request->input('categorie');
-        $medicament = Medicament::get();
+        $medicament = $this->search($nom,$principe_actif,$categorie);
         return view('welcome',[
             'nom'=>$nom,
             'principe_actif'=>$principe_actif,
@@ -87,12 +88,37 @@ class UserController extends Controller
         $nom = $request->input('nom');
         $principe_actif = $request->input('principe_actif');
         $categorie = $request->input('categorie');
-        $medicament = Medicament::get();
+        $medicament = $this->search($nom,$principe_actif,$categorie);
         return view('welcome',[
             'nom'=>$nom,
             'principe_actif'=>$principe_actif,
             'categorie'=>$categorie,
             'Listes'=>$medicament,
         ]);
+    }
+
+    public function search($nom, $principe_actif, $categorie){
+        $query = PharmacieMedicament::query()
+        ->leftJoin('medicaments','pharmacie_medicaments.id_medicament','=','medicaments.id')
+        ->leftJoin('categorie_medicaments','medicaments.id_categorie','=','categorie_medicaments.id')
+        ->leftJoin('pharmacies','pharmacie_medicaments.id_pharmacie','=','pharmacies.id')
+        ->select(
+            'medicaments.nom as medicament_name',
+            'medicaments.principe_actif as principe_actif',
+            'pharmacies.nom as pharmacie_name',
+            'categorie_medicaments.nom as categorie_name',
+            'pharmacie_medicaments.statut as statut',);
+
+        if($nom != null){
+            $query->where('medicaments.nom','like','%'.$nom.'%');
+        }
+        if($principe_actif != null){
+            $query->where('medicaments.principe_actif','like','%'.$principe_actif.'%');
+        }
+        if($categorie != null){
+            $query->where('categorie_medicaments.nom','like','%'.$categorie.'%');
+        }
+        $table = $query->paginate();
+        return $table;
     }
 }
