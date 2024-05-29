@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('medicaments', function (Blueprint $table) {
             $table->id();
             $table->string('nom');
-            $table->string('principe_actif');
-            $table->unsignedBigInteger('id_categorie');
+            $table->string('principe_actif')->nullable();
+            $table->unsignedBigInteger('id_categorie')->nullable();
             $table->string('description');
-            $table->string('code_cip');
+            $table->string('code_cip')->nullable();
             $table->timestamps();
 
             $table->foreign('id_categorie')->references('id')->on('categorie_medicaments')->onDelete('cascade')->onUpdate('cascade');

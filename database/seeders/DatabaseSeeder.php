@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(CategorieSeeder::class);
         $this->call(InitialSeeder::class);
+        $this->call(MedicamentSeeder::class);
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([

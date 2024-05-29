@@ -1,0 +1,44 @@
+/* Global Styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+
+/* Container Styles */
+.container {
+  display: flex;
+  height: calc(100vh - 4rem); /* Subtract header height */
+}
+
+/* Navigation Styles */
+nav .nav{
+  background-color: #f2f2f2;
+  border-right: 1px solid #ddd;
+  padding: 1rem;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  margin-bottom: 0.5rem;
+}
+
+nav a {
+  color: #333;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: #000;
+}
+
+/* Main Content Styles */
+main {
+  flex-grow: 1;
+  padding: 1rem;
+}

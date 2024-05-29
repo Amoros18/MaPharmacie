@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_pharmacie');
             $table->unsignedBigInteger('id_medicament');
             $table->enum('statut',['Disponible','Non Disponible']);
-            $table->integer('quantite');
+            $table->integer('quantite')->nullable();
             $table->timestamps();
 
             $table->foreign('id_pharmacie')->references('id')->on('pharmacies')->onDelete('cascade')->onUpdate('cascade');
