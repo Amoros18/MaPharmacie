@@ -1,26 +1,15 @@
 
 /* Theme Colors */
 :root {
-  --accent-color: rgba(241, 228, 225, 1);
-  --accent-dim-color: #E5D8D5;
-  --accent-lighted-color: rgba(241, 228, 225, 0.5);
-  --accent-lit-color: #F6ECEA;
-  --dark-grey-color: #737373;
   --dark-color: #040404;
   --grey-color: #A9A09E;
   --light-color: #fff;
   --primary-color: #EC6C5A;
-  --primary-lighted-color: rgba(246, 236, 234, 0.9);
-  --swiper-theme-color: #EC6C5A !important;
 }
 
 
 /* - Buttons Color Scheme
 ------------------------------------------------------------- */
-.transparant {
-  background-color: rgba(0,0,0,0);
-  color: #040404;
-}
 .btn.btn-content {
   width: 200px;
   margin-bottom: 20px;
@@ -58,13 +47,7 @@
   color: var(--light-color);
 }
 
-#deroulante {
-  display: none;
-  position: absolute;
-  z-index: 999;
-  background-color: white;
 
-}
 /* Style des autres pages
 ------------------------------------*/
 
@@ -84,116 +67,12 @@ header {
   z-index: 1030;
   color: white;
 }
-#bouton-affiche-masquer-division {
-  margin-left: 5px;
-}
-@media only screen and (max-width: 700px) {
-  #bouton-affiche-masquer-division {
-    margin-left: 0px;
-    margin-top: 5px;
-  }
-}
 
-.action-div {
-  background-color: gray;
-  margin-bottom: 20px;
-  margin-left: 10PX;
-  height: 50px;
-  width: 600px;
-  position: relative;
-  width: 60%;
-  left: 20%;
-  color: var(--light-color);
-  border-style: solid black;
-  border-width: 5px;
-  border-radius: 20px;
-  box-shadow: 4px 4px 4px rgb(0, 0, 0);
-}
-
-.action-button {
-  background-color: gray;
-  margin-bottom: 20px;
-  height: 50px;
-  margin-left: auto;
-  float: right;
-  color: var(--light-color);
-  border-style: solid black;
-  border-width: 5px;
-  border-radius: 20px;
-  box-shadow: 4px 4px 4px rgb(0, 0, 0);
-}
-.action-button:hover {
-  background-color: white;
-  margin-bottom: 20px;
-  color: black;
-}
-
-.action-label {
-  margin-top: 10px;
-}
-
-#deroulante {
-  display: none;
-  margin-left: 10px;
-}
-
-#recherche {
-  display: none;
-  color: #040404;
-}
 
 .text-black {
   color: black;
 }
 
-#bouton-affiche-masquer-recherche
-{
-  float: right;
-}
-.button-div {
-  position: relative;
-  width: 100%;
-  left: 0%;
-  color: var(--light-color);
-}
-
-
-/* FENETRE MODAL
--------------------------------*/
-
-.modal {
-  display: none;
-  position: center;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: transparent;
-  color: black;
-}
-
-.modal-content{
-  background-color: #fefefe;
-  margin: 10%;
-  padding: 20px;
-  border: 1px solid #888;
-}
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
 
 .space-top {
   margin-top: 20px;
@@ -275,15 +154,16 @@ aside a:hover {
   line-height: 1;
   position: absolute;
   left: 55px;
+  margin-top: 10px;
   color: var(--primary-color);
 }
 /* Main Content Styles */
 .container main {
-  flex-grow: 1;
   padding: 1rem;
   color: black;
   margin: 10px;
   margin-left: 230px;
+  width: 100%;
 }
 
 .container main .box{
@@ -308,6 +188,8 @@ aside a:hover {
   padding: 10px;
 }
 
-section {
-  margin-top: 90px;
+.login{
+  width: 70%;
+  margin-left: 15%;
+  margin-top: 20px;
 }

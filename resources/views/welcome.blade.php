@@ -29,15 +29,27 @@
         <form action="" method="POST">
             @csrf
             <div class="row mt-1">
-                    <label for="nature_dossier" class="col-2 control-label">Nom:</label>
+                <div class="col-md-4">
+                    <label for="nature_dossier" class="control-label">Nom:</label>
                     <input type="text" name="nom" class="text" value="{{old('nom',$nom)}}">    
-                    <label for="principe_actif" class="col-2 control-label">Principe Actif:</label>
+                </div>
+                <div class="col-md-4">
+                    <label for="principe_actif" class="control-label">Principe Actif:</label>
                     <input type="text" name="principe_actif" class="text" value="{{old('principe_actif', $principe_actif)}}">        
-                    <label for="categorie" class="col-2 control-label">Categorie:</label>
-                    <input type="text" name="categorie" class="text" value="{{old('categorie',$categorie)}}">    
+                </div>
+                <div class="col-md-4">
+                    <label for="categorie" class="control-label">Categorie:</label>
+                    <select name="categorie" class="text" id="">
+                        <option value="{{$categorie}}">{{$categorie}}</option>
+                        <option value=""></option>
+                        @foreach ($categories as $categorie )
+                            <option value="{{$categorie->nom}}">{{$categorie->nom}}</option>
+                        @endforeach
+                    </select>
+                </div>        
             </div>
             <div class="text-center">
-                    </button > <input type="submit" class="btn btn-primary" value="Recherche"><br><br></center>
+                    </button > <input type="submit" class="bouton" value="Recherche"><br><br></center>
                 </div>
             </form>      
         </form>

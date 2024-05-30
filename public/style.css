@@ -1,8 +1,8 @@
 
 /* Theme Colors */
 :root {
-  --light-color: #fff;
-  --primary-color: #EC6C5A;
+  --secondary-color: #04580b;
+  --primary-color: #18e04a;
 }
 
 
@@ -44,5 +44,13 @@ h3{
   margin: 0px
 }
 section{
+  margin: 10px;
+}
+
+svg{
+  display: none;
+}
+
+.bouton{
   margin: 10px;
 }

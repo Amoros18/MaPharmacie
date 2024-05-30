@@ -39,8 +39,14 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="id_categorie" class="control-label">Id categorie</label>
-                    <input type="id_categorie" name="id_categorie" class="form-control " value="{{old('id_categorie',$table->id_categorie)}}">
+                    <label for="id_categorie" class="control-label">categorie</label>
+                    <select name="id_categorie" class="form-control">
+                        <option value="{{$table->id_categorie}}">{{$categorie->nom}}</option>
+                        <option value=""></option>
+                        @foreach ($categories as $cate )
+                            <option value="{{$cate->id}}">{{$cate->nom}}</option>
+                        @endforeach
+                    </select>
                     @error('id_categorie')
                         <span class="text-danger" role="alert">
                             <strong>{{$message}}</strong>

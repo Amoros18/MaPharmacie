@@ -17,23 +17,25 @@
     <div class="card">
         <div class="card-body">
             <form action="" method="POST" class="vstack gap 3 text-black">
-                @csrf
+                <div class="row mt-1">
 
-                @foreach($medicaments as $medicament )
-                @php
-                    $checked = '';
-                    $id = $medicament->id;
-                    if($check->contains('id_medicament',$id)){
-                        $checked = 'checked';
-                    }
-                @endphp
-                <div class="col">
-                    <label for="medicament" class="col-md-2">{{$medicament->nom}}</label>
-                    <input type="checkbox" name="medicament{{$medicament->id}}" value="on" {{$checked}}>
-                    
+                    @csrf
+
+                    @foreach($medicaments as $medicament )
+                    @php
+                        $checked = '';
+                        $id = $medicament->id;
+                        if($check->contains('id_medicament',$id)){
+                            $checked = 'checked';
+                        }
+                    @endphp
+                    <div class="col-md-4">
+                        <label for="medicament" class="">{{$medicament->nom}}</label>
+                        <input type="checkbox" name="medicament{{$medicament->id}}" value="on" {{$checked}}>
+                        
+                    </div>
+                    @endforeach
                 </div>
-                @endforeach
-
                             <center class="mt-1">
                     <button class="btn btn-new me-2" type="submit" >
                             Enregistrer

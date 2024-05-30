@@ -18,8 +18,14 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="id_pharmacie">Numero Pharmacie:</label>
-                    <input type="text" name="id_pharmacie" class="form-control " value="{{old('id_pharmacie',$table->id_pharmacie)}}">
+                    <label for="id_pharmacie">Nom Pharmacie:</label>
+                    <select name="id_pharmacie" class="form-control" {{$readonly}}>
+                        <option value="{{$table->id_pharmacie}}">{{$pharmacie->nom}}</option>
+                        <option value=""></option>
+                        @foreach ($pharmacies as $cate )
+                            <option value="{{$cate->id}}">{{$cate->nom}}</option>
+                        @endforeach
+                    </select>
                         @error('id_pharmacie')
                             <span class="text-danger" role="alert">
                                 <strong>{{$message}}</strong>

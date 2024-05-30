@@ -18,7 +18,7 @@
 </div>
 
 <div  class="box-body">
-    <div class="container">
+    <div class="ss">
         <div class="table-responsive">
             <table class="table table-hover table-responsible table-striped">
                 <thead>

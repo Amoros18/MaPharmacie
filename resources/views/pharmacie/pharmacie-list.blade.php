@@ -18,7 +18,7 @@
 </div>
 
 <div  class="box-body">
-    <div class="container">
+    <div class="">
         <div class="table-responsive">
             <table class="table table-hover table-responsible table-striped">
                 <thead>
@@ -33,7 +33,7 @@
                     @foreach ($Listes as $Liste )
                         <tr>
                             <td>{{$Liste->id}}</td>
-                            <td>{{$Liste->non}}</td>
+                            <td>{{$Liste->nom}}</td>
                             <td>{{$Liste->numero}}</td>
                             
                             <td><a  href = "{{route('pharmacie.update',['table'=>$Liste])}} ">

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\UserRequest;
+use App\Models\CategorieMedicament;
 use App\Models\Medicament;
+use App\Models\Pharmacie;
 use App\Models\PharmacieMedicament;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -22,7 +24,7 @@ class UserController extends Controller
             $request->session()->regenerate();
             $user = Auth::user();
             $name = $user->name;
-            return redirect()->intended(route('home'));
+            return redirect()->intended(route('dashboard'));
         }
         return to_route('auth.login')->withErrors([
             'email'=>"email invalide"
@@ -31,7 +33,7 @@ class UserController extends Controller
 
     public function logout(){
         Auth::logout();
-        return redirect()->intended(route('auth.login'));
+        return redirect()->intended(route('login'));
     }
 
     public function list(){
@@ -40,12 +42,30 @@ class UserController extends Controller
     }
 
     public function createUser(){
+        $hidden = '';
         $table = new User();
-        return view('user.user-create',['table'=>$table]);
+        $user = Auth::user();
+        $pharmacie = new Pharmacie();
+        if($user->id_pharmacie != 1){
+            $pharmacie = Pharmacie::find($user->id_pharmacie);
+            $hidden = 'readonly';
+        }
+        $pharmacies = Pharmacie::get();
+        return view('user.user-create',[
+            'table'=>$table,
+            'pharmacie'=>$pharmacie,
+            'pharmacies'=>$pharmacies,
+            'readonly'=>$hidden,
+        ]);
     }
 
     public function create_user(UserRequest $request){
         $table = User::create($request->validated());
+        $user = Auth::user();
+        if($user->id_pharmacie != 1){
+            $table->id_pharmacie = $user->id_pharmacie ;
+            $table->save();
+        }
         $password = $request->input('password');
         $table->password = Hash::make($password);
         $table->save();
@@ -53,8 +73,16 @@ class UserController extends Controller
     }
 
     public function updateUser(User $table){
+        $pharmacie = Pharmacie::find($table->id_pharmacie);
+        if($pharmacie == null){
+            $pharmacie = new Pharmacie();
+        }
+        $pharmacies = Pharmacie::get();
         return view('user.user-edit',[
-            'table' => $table
+            'table' => $table,
+            'pharmacie'=>$pharmacie,
+            'pharmacies'=>$pharmacies,
+            'readonly'=>'',
         ]);
     }
 
@@ -76,10 +104,12 @@ class UserController extends Controller
         $principe_actif = $request->input('principe_actif');
         $categorie = $request->input('categorie');
         $medicament = $this->search($nom,$principe_actif,$categorie);
+        $categories = CategorieMedicament::get();
         return view('welcome',[
             'nom'=>$nom,
             'principe_actif'=>$principe_actif,
             'categorie'=>$categorie,
+            'categories'=>$categories,
             'Listes'=>$medicament,
         ]);
     }
@@ -89,10 +119,12 @@ class UserController extends Controller
         $principe_actif = $request->input('principe_actif');
         $categorie = $request->input('categorie');
         $medicament = $this->search($nom,$principe_actif,$categorie);
+        $categories = CategorieMedicament::get();
         return view('welcome',[
             'nom'=>$nom,
             'principe_actif'=>$principe_actif,
             'categorie'=>$categorie,
+            'categories'=>$categories,
             'Listes'=>$medicament,
         ]);
     }
@@ -118,6 +150,7 @@ class UserController extends Controller
         if($categorie != null){
             $query->where('categorie_medicaments.nom','like','%'.$categorie.'%');
         }
+        $query->where('pharmacie_medicaments.statut','=','Disponible');
         $table = $query->paginate();
         return $table;
     }
