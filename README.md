@@ -1,66 +1,45 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+I.	Introduction
 
-## About Laravel
+A.	Contexte et objectifs du projet
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+La ville de Maroua fait face à des défis importants en matière d'accès aux soins de santé et aux médicaments. Les habitants rencontrent souvent des difficultés pour trouver les médicaments dont ils ont besoin, en raison du manque de visibilité sur la disponibilité dans les différentes pharmacies de la ville.
+C'est dans ce contexte que le projet de développement d'une plateforme de consultation des médicaments a été initié. L'objectif principal est de permettre aux pharmacies de renseigner en temps réel leurs stocks de médicaments, et aux clients de visualiser la disponibilité dans les différents établissements.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+B.	Présentation de la plateforme
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+La plateforme de consultation des médicaments sera une application web accessible depuis ordinateurs, tablettes et smartphones. Elle offrira deux interfaces distinctes :
+	Une interface destinée aux pharmacies, leur permettant de gérer leurs stocks de médicaments et de renseigner les informations sur leur disponibilité.
+	Une interface pour les clients, leur permettant de rechercher des médicaments et de consulter leur disponibilité dans les différentes pharmacies de la ville.
+La plateforme aura également des fonctionnalités d'administration permettant de gérer les utilisateurs, de valider les informations saisies et de générer des statistiques.
 
-## Learning Laravel
+C.	Périmètre et limites du projet
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Ce projet se limitera dans un premier temps à la ville de Maroua. L'objectif est de mettre en place une solution efficace et adaptée aux besoins locaux, avant d'envisager une éventuelle extension à d'autres villes.
+La plateforme se concentrera uniquement sur la consultation des stocks de médicaments. Les fonctionnalités liées à la commande, à la livraison ou au paiement en ligne ne font pas partie du périmètre initial de ce projet.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+II.	Fonctionnalités de la plateforme
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+A.	Interface pour les pharmacies
+i.	Inscription et gestion du compte
 
-## Laravel Sponsors
+	Permettre aux pharmacies de s'inscrire sur la plateforme et de créer un compte
+	Offrir des fonctionnalités de gestion du compte (modification des informations, réinitialisation du mot de passe, etc.)
+	Assurer une validation des informations saisies lors de l'inscription
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+B.	Interface pour les clients
 
-### Premium Partners
+i.	Recherche de médicaments
+	Permettre aux clients de rechercher des médicaments par nom, par catégorie ou par symptôme
+	Offrir des fonctionnalités de filtrage et de tri des résultats de recherche
+	Afficher les informations pertinentes sur les médicaments (dénomination, description, composition, etc.)
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+ii.	Consultation de la disponibilité par pharmacie
+	Permettre aux clients de visualiser la disponibilité des médicaments recherchés dans les différentes pharmacies
 
-## Contributing
+C.	Fonctionnalités d'administration
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+	Permettre aux administrateurs de créer, modifier et supprimer les comptes des pharmacies
+	Permettre aux administrateurs de valider les informations saisies par les pharmacies (disponibilité, coordonnées, etc.)
+	Mettre en place des processus de vérification et de correction des données erronées ou incohérentes.
+	Permettre aux administrateurs de générer des rapports sur l'activité de la plateforme
